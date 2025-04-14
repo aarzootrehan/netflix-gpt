@@ -1,20 +1,33 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { isValid } from "../utils/validate";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router";
 
 const Login = () => {
+  // Hooks
   const [isSigninForm, setIsSigninForm] = useState();
   const [errorMsg, setErrorMsg] = useState();
+  const navigate = useNavigate();
 
+  /**
+   * useRef
+   */
   const emailField = useRef();
   const passField = useRef();
+  const fName = useRef();
 
+  // Method for toggling sign in / sign up form
   const toggleSigninForm = () => {
     setIsSigninForm(!isSigninForm);
   };
 
+  // Method to sign in user in the app
   const signInUser = () => {
     setErrorMsg("");
     const error = isValid(emailField.current.value, passField.current.value);
@@ -24,12 +37,15 @@ const Login = () => {
       // go to sign in / sign up
       if (!isSigninForm) {
         // Sign in the user
-        signInWithEmailAndPassword(auth, emailField.current.value, passField.current.value)
+        signInWithEmailAndPassword(
+          auth,
+          emailField.current.value,
+          passField.current.value
+        )
           .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
             console.log("User Signed in successfully!!", user);
-            // ...
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -48,14 +64,30 @@ const Login = () => {
             // Signed up
             const user = userCredential.user;
             console.log("User signed up ", user);
-            // ...
+            updateProfile(auth.currentUser, {
+              displayName: fName.current.value,
+              photoURL: "https://example.com/jane-q-user/profile.jpg",
+            })
+              .then(() => {
+                // const { uid, email, displayName } = auth.currentUser;
+                // // Dispatching an action to the store to store data in it
+                // dispatch(
+                //   addUser({ uid: uid, email: email, displayName: displayName })
+                // );
+                // Profile updated!
+                navigate("/browse");
+              })
+              .catch((error) => {
+                // An error occurred
+                // ...
+              });
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             // ..
             console.log("OOPSS some error ", errorCode, errorMessage);
-            setErrorMsg(errorMessage)
+            setErrorMsg(errorMessage);
           });
       }
     } else setErrorMsg(error);
@@ -76,8 +108,9 @@ const Login = () => {
           {isSigninForm ? (
             <input
               type="text"
+              ref={fName}
               placeholder="Full Name"
-              className="sign-in-elem"
+              className="h-[40px] w-[70%] text-2xl-white p-8 bg-inherit rounded-2xl border border-white sign-in-field"
             />
           ) : (
             ""
