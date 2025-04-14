@@ -45,17 +45,6 @@
   padding: 20px;
 }
 
-.sign-in-elem {
-  height: 40px;
-  width: 70%;
-  border-radius: 5px;
-  font-size: 14px;
-  padding: 7px;
-  background-color: inherit;
-  border: 1px solid white;
-  color: white;
-}
-
 
 .sign-in-btn {
   background-color: red;
@@ -65,6 +54,10 @@
   font-size: 16px;
   border-radius: 4px;
   border: 1px solid red;
+}
+
+.sign-in-field {
+  color: white
 }
 
 .details-sec {
