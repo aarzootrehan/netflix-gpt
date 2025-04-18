@@ -6,4 +6,8 @@ export const USER_AVATAR = "https://example.com/jane-q-user/profile.jpg";
 
 export const MOVIE_URL = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 
+export const POPULAR_MOVIE_URL = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+
 export const GET_FETCH_VIDEO_URL = (id) => `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
+
+export const POSTER_PATH = "https://image.tmdb.org/t/p/original"

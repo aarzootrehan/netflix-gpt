@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 const useNowPlayingHooks = () => {
     const dispatch = useDispatch();
-  const [movieList, setMovieList] = useState([]);
   const token = process.env.TMDB_TOKEN;
 
   const fetchData = async () => {
@@ -23,7 +22,6 @@ const useNowPlayingHooks = () => {
     const json = await data.json();
     console.log(json.results);
     dispatch(addMovie(json.results));
-    setMovieList(json.results);
 };
 
 useEffect(() => {

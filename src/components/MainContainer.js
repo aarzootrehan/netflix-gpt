@@ -4,7 +4,6 @@ import VideoTitle from "./VideoTitle";
 
 const MainContainer = () => {
   const movies = useSelector((state) => state.movies.nowPlayingMovies);
-  console.log("movies ss", movies);
 
   if (movies === null || movies === undefined) return null;
 
@@ -13,7 +12,7 @@ const MainContainer = () => {
   let { original_title, overview, id } = firstMovie;
 
   return (
-    <div>
+    <div className="bg-black">
       <VideoTitle title={original_title} 
       overview={overview}
       id={id} />

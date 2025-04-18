@@ -10,11 +10,12 @@ const VideoBackground = ({ id }) => {
   console.log("trailerVideo ", trailerVideo);
   return (
     <div className="aspect-ratio w-screen">
+      {/**autoplay=1&**/}
       {trailerVideo && (
         <iframe
-          width="930"
+          width="97%"
           height="523"
-          src={'https://www.youtube.com/embed/' + trailerVideo + '?autoplay=1&mute=1'}
+          src={'https://www.youtube.com/embed/' + trailerVideo + '?mute=1'}
           title="And he didn&#39;t feel a thing. 👊 Get your tickets for #Novocaine now. In theatres everywhere March 14."
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

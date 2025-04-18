@@ -24,3 +24,4 @@ Steps:
 # Left overs
 Display name is not being populated in Header.js in {user.displayName}
 Pick photo url from when user logged in and display it in Header.js
+Fix the video and posters are overlapping

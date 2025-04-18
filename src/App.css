@@ -113,3 +113,24 @@ VideoTitle*/
   left: 20px;
   width: 40%;
 }
+
+/** Movie list and card */
+.movie-card {
+  border-radius: 5px;
+  width: 150px;
+  height: 120px;
+  margin-right: 4px;
+}
+
+.movie-list-container {
+  display: flex;
+  flex-direction: column;
+  overflow-x: scroll;
+  color: white;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.bg-black {
+  background-color: black;
+}

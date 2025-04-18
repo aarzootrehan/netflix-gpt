@@ -6,11 +6,11 @@ const VideoTitle = ({ title, overview, id }) => {
     <div
       className="video-title-container
        bg-gradient-to-b from-black to-transparent
-       h-[400px] w-[930px] max-w-[930px] min-h-[400px] min-w-[930px]
-       max-h-[400px]
+       
+      
       aspect-ratio justify-center items-start
        p-4
-       absolute top-[100px] left-[20px] text-white"
+       relative text-white"
     >
       <div className="absolute video-container">
         <div className="video-title">{title}</div>
@@ -25,7 +25,5 @@ const VideoTitle = ({ title, overview, id }) => {
     </div>
   );
 };
-
-// const video: HayhDN2WljI
 
 export default VideoTitle;
