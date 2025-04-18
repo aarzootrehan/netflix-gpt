@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/**
+ * Slice for managing user data in the Redux store.
+ * @typedef {Object} UserSlice
+ */
 const userSlice = createSlice({
   name: "user",
   initialState: null,

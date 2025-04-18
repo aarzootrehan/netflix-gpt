@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router";
+import { USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   // Hooks
@@ -66,26 +67,23 @@ const Login = () => {
             console.log("User signed up ", user);
             updateProfile(auth.currentUser, {
               displayName: fName.current.value,
-              photoURL: "https://example.com/jane-q-user/profile.jpg",
+              photoURL: USER_AVATAR,
             })
               .then(() => {
-                // const { uid, email, displayName } = auth.currentUser;
-                // // Dispatching an action to the store to store data in it
+               
                 // dispatch(
                 //   addUser({ uid: uid, email: email, displayName: displayName })
                 // );
                 // Profile updated!
-                navigate("/browse");
+               // navigate("/browse");
               })
               .catch((error) => {
                 // An error occurred
-                // ...
               });
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // ..
             console.log("OOPSS some error ", errorCode, errorMessage);
             setErrorMsg(errorMessage);
           });
